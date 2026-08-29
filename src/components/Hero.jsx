@@ -111,15 +111,14 @@ export default function Hero({ data }) {
                 <code>
 <span className="code-keyword">const</span> <span className="code-var">candidate</span> = &#123;{'\n'}
   <span className="code-var">name</span>: <span className="code-str">"{profile.name}"</span>,{'\n'}
-  <span className="code-var">role</span>: <span className="code-str">"{profile.title}"</span>,{'\n'}
-  <span className="code-var">location</span>: <span className="code-str">"{profile.location}"</span>,{'\n'}
-  <span className="code-var">stack</span>: [<span className="code-str">"React"</span>, <span className="code-str">"TypeScript"</span>, <span className="code-str">"Node.js"</span>],{'\n'}
-  <span className="code-var">status</span>: <span className="code-str">"Ready for Impact"</span>,{'\n'}
-  <span className="code-var">passionateAbout</span>: [<span className="code-str">"Clean Code"</span>, <span className="code-str">"Scalability"</span>],{'\n'}
-  <span className="code-var">hireable</span>: <span className="code-keyword">true</span>{'\n'}
+  <span className="code-var">education</span>: <span className="code-str">"S1 Sistem Informasi (Universitas Gunadarma)"</span>,{'\n'}
+  <span className="code-var">gpa</span>: <span className="code-num">3.58</span>,{'\n'}
+  <span className="code-var">coreSkills</span>: [<span className="code-str">"Laravel"</span>, <span className="code-str">"MySQL"</span>, <span className="code-str">"Tailwind CSS"</span>, <span className="code-str">"IT Support"</span>],{'\n'}
+  <span className="code-var">networking</span>: [<span className="code-str">"Cisco LAN/WAN"</span>, <span className="code-str">"TCP/IP"</span>],{'\n'}
+  <span className="code-var">readyForWork</span>: <span className="code-keyword">true</span>{'\n'}
 &#125;;{'\n\n'}
-<span className="code-comment">// Let's build something exceptional together</span>{'\n'}
-<span className="code-var">candidate</span>.<span className="code-keyword">solveComplexProblems</span>();
+<span className="code-comment">// Ready to bring technical and software engineering solutions</span>{'\n'}
+<span className="code-var">candidate</span>.<span className="code-keyword">deploySolutions</span>();
                 </code>
               </pre>
             </div>

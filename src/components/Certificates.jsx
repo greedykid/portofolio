@@ -30,6 +30,11 @@ export default function Certificates({ data }) {
                   </span>
                 </div>
                 <h3 className="cert-title">{cert.title}</h3>
+                {cert.credentialId && (
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
+                    {cert.credentialId}
+                  </div>
+                )}
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '0.75rem', borderTop: '1px solid var(--border-subtle)' }}>

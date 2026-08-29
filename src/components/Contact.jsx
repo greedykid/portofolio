@@ -91,8 +91,8 @@ export default function Contact({ data }) {
                 <MessageSquare size={20} />
               </div>
               <div style={{ flexGrow: 1 }}>
-                <div style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>WhatsApp Chat</div>
-                <div style={{ fontWeight: 600, fontSize: '0.9375rem' }}>Kirim Pesan Instan</div>
+                <div style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>WhatsApp / Telepon</div>
+                <div style={{ fontWeight: 600, fontSize: '0.9375rem' }}>{profile.phone}</div>
               </div>
             </a>
 

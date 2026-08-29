@@ -24,15 +24,29 @@ export default function AboutStats({ data }) {
           </p>
         </div>
 
-        {/* Narrative Description */}
+        {/* Narrative Description & Languages */}
         <div className="card-base" style={{ marginBottom: '2.5rem' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '1.75rem' }}>
             {profile.aboutNarrative.map((paragraph, index) => (
               <p key={index} style={{ fontSize: '1.0625rem', lineHeight: '1.75' }}>
                 {paragraph}
               </p>
             ))}
           </div>
+
+          {/* Languages Row */}
+          {data.languages && (
+            <div style={{ paddingTop: '1.25rem', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
+              <span style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>
+                🗣️ Kemampuan Bahasa:
+              </span>
+              {data.languages.map((lang, lIdx) => (
+                <div key={lIdx} style={{ fontSize: '0.875rem', padding: '0.3rem 0.75rem', backgroundColor: 'var(--bg-surface-2)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
+                  <strong style={{ color: 'var(--accent-primary)' }}>{lang.name}</strong> — <span style={{ color: 'var(--text-secondary)' }}>{lang.level}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Stats Grid */}
