@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "skills": {
+    "impeccable": {
+      "source": "smithery.ai",
+      "sourceUrl": "https://smithery.ai/skills/seflless/impeccable",
+      "sourceType": "well-known",
+      "computedHash": "4f735ffb55d9e958e11419c66e1a420f2d8c06b53eaf09bbd8f7fb5779798895",
+      "wellKnownDigest": "sha256:bca10c67f4a3c1ae0324bca9e412d88716561c37609dd2ef09f0606b181de976"
+    }
+  }
+}
