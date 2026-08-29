@@ -107,10 +107,10 @@ export const portfolioData = {
       description: "Aplikasi e-commerce fungsional khusus produk kuliner tradisional sebagai implementasi dan luaran resmi proyek Penulisan Ilmiah. Mengembangkan arsitektur backend MVC menggunakan Laravel, merancang skema database relasional MySQL, serta mengoptimalkan query data transaksi dan inventaris produk.",
       impact: "Membangun antarmuka modern, interaktif, dan responsif dengan Tailwind CSS serta menyusun dokumentasi sistem komprehensif (Use Case, Activity, Sequence Diagram, & ERD).",
       tags: ["Laravel 12", "MySQL", "Tailwind CSS", "PHP", "Blade Engine", "UML / ERD"],
-      demoUrl: "https://github.com/greedykid",
+      demoUrl: "https://gegares.shop",
       githubUrl: "https://github.com/greedykid",
       period: "Sep 2025 – Feb 2026",
-      image: "./images/gegares-preview.jpg"
+      image: "./images/gegares-live.png"
     },
     {
       id: "project-berkah-mulia",
@@ -123,7 +123,7 @@ export const portfolioData = {
       demoUrl: "https://bmberkahmulia.com",
       githubUrl: "https://github.com/greedykid/berkahmulia",
       period: "Jun 2026",
-      image: "./images/berkah-mulia-preview.jpg"
+      image: "./images/berkahmulia-live.png"
     }
   ],
 
