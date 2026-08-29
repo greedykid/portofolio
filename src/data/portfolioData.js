@@ -110,7 +110,7 @@ export const portfolioData = {
       demoUrl: "https://github.com/greedykid",
       githubUrl: "https://github.com/greedykid",
       period: "Sep 2025 – Feb 2026",
-      image: "https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=800&q=80"
+      image: "./images/gegares-preview.jpg"
     },
     {
       id: "project-berkah-mulia",
@@ -123,7 +123,7 @@ export const portfolioData = {
       demoUrl: "https://bmberkahmulia.com",
       githubUrl: "https://github.com/greedykid/berkahmulia",
       period: "Jun 2026",
-      image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&q=80"
+      image: "./images/berkah-mulia-preview.jpg"
     }
   ],
 
