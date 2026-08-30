@@ -24,6 +24,10 @@ textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
+.portfolio-app-root {
+  animation: page-enter 650ms var(--ease-expo) both;
+}
+
 body {
   min-height: 100vh;
   font-family: var(--font-sans);
@@ -173,13 +177,16 @@ button {
 }
 
 @supports (animation-timeline: view()) {
-  .section:not(.hero-section) {
-    view-timeline-name: --section-reveal;
-    view-timeline-axis: block;
-    animation: section-reveal both linear;
-    animation-timeline: --section-reveal;
-    animation-range: entry 0% cover 28%;
-  }
+.section.reveal-ready {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms var(--ease-expo), transform 700ms var(--ease-expo);
+}
+
+.section.reveal-ready.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 }
 
 .section-header {
@@ -1232,6 +1239,11 @@ button {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes page-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @keyframes hero-visual-enter {
   from { opacity: 0; transform: translate3d(24px, 14px, 0) scale(0.97); }
   to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
@@ -1240,11 +1252,6 @@ button {
 @keyframes ambient-drift {
   from { transform: translate3d(-2rem, 1rem, 0) scale(0.95); }
   to { transform: translate3d(3rem, 3rem, 0) scale(1.08); }
-}
-
-@keyframes section-reveal {
-  from { opacity: 0.25; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1257,6 +1264,11 @@ button {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .section.reveal-ready {
+    opacity: 1;
+    transform: none;
   }
 }
 
