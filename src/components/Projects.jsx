@@ -65,15 +65,7 @@ export default function Projects({ data }) {
 
                 {/* Impact callout */}
                 {project.impact && (
-                  <div style={{
-                    backgroundColor: 'var(--bg-surface-2)',
-                    borderLeft: '2px solid var(--accent-cyan)',
-                    padding: '0.6rem 0.85rem',
-                    borderRadius: 'var(--radius-xs)',
-                    marginBottom: '1.25rem',
-                    fontSize: '0.8125rem',
-                    color: 'var(--text-secondary)'
-                  }}>
+                  <div className="project-impact">
                     <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.2rem' }}>
                       ⚡ Dampak & Hasil:
                     </strong>

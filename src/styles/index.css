@@ -16,6 +16,14 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+body,
+button,
+a,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   min-height: 100vh;
   font-family: var(--font-sans);
@@ -83,6 +91,11 @@ button {
   background: none;
 }
 
+:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 4px;
+}
+
 /* ==========================================================================
    BUTTONS & INTERACTIVE ELEMENTS
    ========================================================================== */
@@ -95,7 +108,10 @@ button {
   font-weight: 600;
   padding: 0.625rem 1.25rem;
   border-radius: var(--radius-md);
-  transition: all var(--duration-normal) var(--ease-expo);
+  transition: transform var(--duration-fast) var(--ease-expo),
+              background-color var(--duration-fast) var(--ease-expo),
+              border-color var(--duration-fast) var(--ease-expo),
+              box-shadow var(--duration-fast) var(--ease-expo);
   text-align: center;
   white-space: nowrap;
 }
@@ -110,6 +126,12 @@ button {
   background-color: var(--accent-primary-hover);
   box-shadow: var(--shadow-glow);
   transform: translateY(-2px);
+}
+
+.btn:active,
+.icon-btn:active,
+.filter-tab:active {
+  transform: translateY(1px) scale(0.98);
 }
 
 .btn-secondary {
@@ -150,8 +172,29 @@ button {
   position: relative;
 }
 
+@supports (animation-timeline: view()) {
+  .section:not(.hero-section) {
+    view-timeline-name: --section-reveal;
+    view-timeline-axis: block;
+    animation: section-reveal both linear;
+    animation-timeline: --section-reveal;
+    animation-range: entry 0% cover 28%;
+  }
+}
+
 .section-header {
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.section-tag {
+  transform: translateX(-0.35rem);
+  opacity: 0.75;
+  transition: transform var(--duration-normal) var(--ease-expo), opacity var(--duration-normal) var(--ease-expo);
+}
+
+.section-header:hover .section-tag {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .section-tag {
@@ -203,6 +246,21 @@ button {
   box-shadow: var(--shadow-md);
 }
 
+.card-hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% 0%, oklch(0.75 0.16 200 / 0.08), transparent 52%);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-expo);
+}
+
+.card-hover:hover::after {
+  opacity: 1;
+}
+
 /* Badge/Tag styling */
 .tech-tag {
   display: inline-flex;
@@ -223,6 +281,7 @@ button {
   color: var(--text-primary);
   border-color: var(--accent-primary);
   background-color: var(--accent-primary-subtle);
+  transform: translateY(-2px);
 }
 
 /* Availability Badge */
@@ -272,6 +331,10 @@ button {
   background-color: var(--bg-glass);
   backdrop-filter: blur(14px) saturate(180%);
   border-bottom: 1px solid var(--border-subtle);
+}
+
+.site-header.scrolled .navbar-inner {
+  min-height: 2.35rem;
 }
 
 .navbar-inner {
@@ -405,6 +468,21 @@ button {
   padding-bottom: clamp(4rem, 8vw, 6rem);
 }
 
+.hero-section::before {
+  content: '';
+  position: absolute;
+  width: min(42rem, 75vw);
+  height: min(42rem, 75vw);
+  top: -22rem;
+  left: 42%;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  opacity: 0.07;
+  filter: blur(90px);
+  pointer-events: none;
+  animation: ambient-drift 12s ease-in-out infinite alternate;
+}
+
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
@@ -415,6 +493,20 @@ button {
 .hero-content,
 .hero-visual {
   min-width: 0;
+}
+
+.hero-content > * {
+  animation: hero-enter 700ms var(--ease-expo) both;
+}
+
+.hero-content > :nth-child(1) { animation-delay: 80ms; }
+.hero-content > :nth-child(2) { animation-delay: 160ms; }
+.hero-content > :nth-child(3) { animation-delay: 240ms; }
+.hero-content > :nth-child(4) { animation-delay: 320ms; }
+.hero-content > :nth-child(5) { animation-delay: 400ms; }
+
+.hero-visual {
+  animation: hero-visual-enter 900ms var(--ease-expo) 220ms both;
 }
 
 @media (max-width: 960px) {
@@ -477,6 +569,13 @@ button {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   overflow: hidden;
+  box-shadow: var(--shadow-lg), 0 0 0 1px oklch(0.75 0.16 200 / 0.04);
+  transition: transform var(--duration-slow) var(--ease-expo), box-shadow var(--duration-slow) var(--ease-expo);
+}
+
+.hero-code-card:hover {
+  transform: translateY(-6px) rotate(0.35deg);
+  box-shadow: var(--shadow-lg), var(--shadow-glow-cyan);
 }
 
 .terminal-header {
@@ -642,6 +741,10 @@ button {
   box-shadow: 0 2px 10px -2px oklch(0.62 0.22 260 / 0.4);
 }
 
+.filter-tab {
+  transition: transform var(--duration-fast) var(--ease-expo), color var(--duration-fast) var(--ease-expo), background-color var(--duration-fast) var(--ease-expo), border-color var(--duration-fast) var(--ease-expo), box-shadow var(--duration-fast) var(--ease-expo);
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
@@ -670,6 +773,18 @@ button {
   transform: translateY(-4px);
   border-color: var(--border-focus);
   box-shadow: var(--shadow-lg);
+}
+
+.project-card,
+.skill-category-card,
+.stat-card,
+.cert-card,
+.timeline-card,
+.contact-method-item {
+  transition: transform var(--duration-normal) var(--ease-expo),
+              box-shadow var(--duration-normal) var(--ease-expo),
+              border-color var(--duration-normal) var(--ease-expo),
+              background-color var(--duration-normal) var(--ease-expo);
 }
 
 .project-thumbnail {
@@ -746,6 +861,22 @@ button {
   padding-top: 1rem;
   border-top: 1px solid var(--border-subtle);
   flex-wrap: wrap;
+}
+
+.project-impact {
+  background-color: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-xs);
+  margin-bottom: 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.project-impact strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--text-primary);
 }
 
 /* ==========================================================================
@@ -1094,6 +1225,39 @@ button {
 @keyframes slide-up {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-enter {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-visual-enter {
+  from { opacity: 0; transform: translate3d(24px, 14px, 0) scale(0.97); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes ambient-drift {
+  from { transform: translate3d(-2rem, 1rem, 0) scale(0.95); }
+  to { transform: translate3d(3rem, 3rem, 0) scale(1.08); }
+}
+
+@keyframes section-reveal {
+  from { opacity: 0.25; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ==========================================================================
