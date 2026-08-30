@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MessageSquare, Copy, Check, Send, MapPin, Linkedin, Github } from 'lucide-react';
+import { Mail, MessageSquare, Copy, Check, Send, MapPin, Linkedin } from 'lucide-react';
 
 export default function Contact({ data }) {
   const { profile } = data;
@@ -42,31 +42,27 @@ export default function Contact({ data }) {
   };
 
   return (
-    <section className="section" id="contact" style={{ backgroundColor: 'var(--bg-surface-1)' }}>
+    <section className="section" id="contact">
       <div className="container">
-        <div className="section-header">
-          <div className="section-tag" id="contact-section-tag">
-            <span>// HUBUNGI SAYA</span>
-          </div>
-          <h2 className="section-title">Mari Berdiskusi & Berkolaborasi</h2>
-          <p className="section-description">
-            Sedang mencari engineer untuk tim Anda atau ingin mendiskusikan peluang proyek baru? Hubungi saya langsung melalui form atau kontak di bawah ini.
-          </p>
-        </div>
+        <div className="contact-layout">
+          {/* Contact Info */}
+          <div className="contact-info">
+            <div>
+              <div className="section-label" id="contact-section-label">Hubungi Saya</div>
+              <h2 className="section-title">Get in Touch</h2>
+              <p className="section-description" style={{ marginBottom: '1.75rem' }}>
+                Sedang mencari developer untuk tim Anda atau ingin mendiskusikan proyek baru? Kirim pesan melalui form atau kontak di bawah ini.
+              </p>
+            </div>
 
-        <div className="contact-grid">
-          {/* Contact Methods Info */}
-          <div className="contact-info-card">
             {/* Email item with 1-click copy */}
             <div className="contact-method-item" id="contact-email-item">
               <div className="contact-icon">
-                <Mail size={20} />
+                <Mail size={19} />
               </div>
               <div style={{ flexGrow: 1, minWidth: 0 }}>
-                <div style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>Email Langsung</div>
-                <div style={{ fontWeight: 600, fontSize: '0.9375rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                  {profile.socials.email}
-                </div>
+                <div className="contact-method-label">Email Langsung</div>
+                <div className="contact-method-value">{profile.socials.email}</div>
               </div>
               <button
                 onClick={handleCopyEmail}
@@ -74,8 +70,9 @@ export default function Contact({ data }) {
                 title="Salin Email"
                 aria-label="Salin alamat email"
                 id="copy-email-btn"
+                style={{ width: '36px', height: '36px' }}
               >
-                {copied ? <Check size={16} color="var(--status-available-dot)" /> : <Copy size={16} />}
+                {copied ? <Check size={15} color="var(--status-available-dot)" /> : <Copy size={15} />}
               </button>
             </div>
 
@@ -87,12 +84,12 @@ export default function Contact({ data }) {
               className="contact-method-item"
               id="contact-whatsapp-item"
             >
-              <div className="contact-icon" style={{ color: '#25d366', backgroundColor: 'rgba(37, 211, 102, 0.12)' }}>
-                <MessageSquare size={20} />
+              <div className="contact-icon">
+                <MessageSquare size={19} />
               </div>
               <div style={{ flexGrow: 1 }}>
-                <div style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>WhatsApp / Telepon</div>
-                <div style={{ fontWeight: 600, fontSize: '0.9375rem' }}>{profile.phone}</div>
+                <div className="contact-method-label">WhatsApp / Telepon</div>
+                <div className="contact-method-value">{profile.phone}</div>
               </div>
             </a>
 
@@ -104,23 +101,23 @@ export default function Contact({ data }) {
               className="contact-method-item"
               id="contact-linkedin-item"
             >
-              <div className="contact-icon" style={{ color: '#0a66c2', backgroundColor: 'rgba(10, 102, 194, 0.12)' }}>
-                <Linkedin size={20} />
+              <div className="contact-icon">
+                <Linkedin size={19} />
               </div>
               <div style={{ flexGrow: 1 }}>
-                <div style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>LinkedIn Network</div>
-                <div style={{ fontWeight: 600, fontSize: '0.9375rem' }}>Koneksi & Rekomendasi</div>
+                <div className="contact-method-label">LinkedIn</div>
+                <div className="contact-method-value">rizkiarbiansyah</div>
               </div>
             </a>
 
             {/* Location */}
             <div className="contact-method-item">
               <div className="contact-icon">
-                <MapPin size={20} />
+                <MapPin size={19} />
               </div>
-              <div>
-                <div style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>Lokasi Domisili</div>
-                <div style={{ fontWeight: 600, fontSize: '0.9375rem' }}>{profile.location} (Remote Ready)</div>
+              <div style={{ flexGrow: 1 }}>
+                <div className="contact-method-label">Lokasi Domisili</div>
+                <div className="contact-method-value">{profile.location}</div>
               </div>
             </div>
           </div>

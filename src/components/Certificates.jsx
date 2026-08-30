@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, ExternalLink, CheckCircle } from 'lucide-react';
+import { ExternalLink, CheckCircle } from 'lucide-react';
 
 export default function Certificates({ data }) {
   const { certificates } = data;
@@ -9,36 +9,23 @@ export default function Certificates({ data }) {
   return (
     <section className="section" id="certificates">
       <div className="container">
-        <div className="section-header">
-          <div className="section-tag" id="certs-section-tag">
-            <span>// SERTIFIKASI & KREDENSIAL</span>
-          </div>
-          <h2 className="section-title">Lisensi & Validasi Kompetensi</h2>
-          <p className="section-description">
-            Sertifikasi industri yang telah diverifikasi untuk menjamin standar teknis dan keahlian terkini.
-          </p>
-        </div>
+        <div className="section-label" id="certs-section-label">Sertifikasi</div>
+        <h2 className="section-title" style={{ marginBottom: '2.5rem' }}>Kredensial &amp; Kompetensi Terverifikasi</h2>
 
         <div className="certs-grid" id="certificates-grid">
           {certificates.map((cert, index) => (
-            <div key={index} className="cert-card card-hover">
+            <div key={index} className="cert-card">
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                  <span className="cert-issuer">{cert.issuer}</span>
-                  <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
-                    {cert.date}
-                  </span>
-                </div>
+                <div className="cert-issuer">{cert.issuer}</div>
                 <h3 className="cert-title">{cert.title}</h3>
                 {cert.credentialId && (
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-                    {cert.credentialId}
-                  </div>
+                  <div className="cert-meta">{cert.credentialId}</div>
                 )}
+                <div className="cert-meta" style={{ marginTop: '0.25rem' }}>{cert.date}</div>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '0.75rem', borderTop: '1px solid var(--border-subtle)' }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.8125rem', color: 'var(--status-available-dot)', fontWeight: 600 }}>
+              <div className="cert-footer">
+                <span className="cert-verified">
                   <CheckCircle size={14} /> Terverifikasi
                 </span>
 

@@ -1,65 +1,80 @@
 import React from 'react';
-import { UserCheck, Award, Code2, HeartHandshake, Languages } from 'lucide-react';
+import { MapPin, GraduationCap, Award } from 'lucide-react';
 
 export default function AboutStats({ data }) {
-  const { profile, stats } = data;
-
-  const statIcons = [
-    <UserCheck size={22} className="stat-icon-svg" />,
-    <Code2 size={22} className="stat-icon-svg" />,
-    <Award size={22} className="stat-icon-svg" />,
-    <HeartHandshake size={22} className="stat-icon-svg" />
-  ];
+  const { profile, stats, languages } = data;
 
   return (
     <section className="section" id="about">
       <div className="container">
-        <div className="section-header">
-          <div className="section-tag" id="about-section-tag">
-            <span>// TENTANG SAYA</span>
-          </div>
-          <h2 className="section-title">Dedikasi Pada Rekayasa Berkualitas</h2>
-          <p className="section-description">
-            Menggabungkan keahlian logika komputasi, kepekaan desain antarmuka, dan orientasi pada hasil bisnis yang nyata.
-          </p>
-        </div>
+        <div className="section-label" id="about-section-label">Tentang Saya</div>
 
-        {/* Narrative Description & Languages */}
-        <div className="card-base" style={{ marginBottom: '2.5rem' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '1.75rem' }}>
+        <div className="about-layout">
+          {/* Narrative */}
+          <div className="about-narrative">
+            <h2 className="section-title">Rekayasa Berkualitas, Solusi yang Terukur</h2>
             {profile.aboutNarrative.map((paragraph, index) => (
-              <p key={index} style={{ fontSize: '1.0625rem', lineHeight: '1.75' }}>
-                {paragraph}
-              </p>
+              <p key={index}>{paragraph}</p>
             ))}
           </div>
 
-          {/* Languages Row */}
-          {data.languages && (
-            <div style={{ paddingTop: '1.25rem', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
-              <span style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--text-primary)', fontFamily: 'var(--font-mono)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-                <Languages size={16} style={{ color: 'var(--accent-cyan)' }} />
-                <span>Kemampuan Bahasa:</span>
-              </span>
-              {data.languages.map((lang, lIdx) => (
-                <div key={lIdx} style={{ fontSize: '0.875rem', padding: '0.3rem 0.75rem', backgroundColor: 'var(--bg-surface-2)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
-                  <strong style={{ color: 'var(--accent-primary)' }}>{lang.name}</strong> — <span style={{ color: 'var(--text-secondary)' }}>{lang.level}</span>
-                </div>
-              ))}
+          {/* Quick Info Side */}
+          <div className="about-side">
+            <div className="about-info-card">
+              <div className="about-info-title">Informasi Singkat</div>
+              <div className="about-info-row">
+                <span className="about-info-key">Nama</span>
+                <span className="about-info-value">{profile.name}</span>
+              </div>
+              <div className="about-info-row">
+                <span className="about-info-key">Pendidikan</span>
+                <span className="about-info-value">{profile.educationSubtitle}</span>
+              </div>
+              <div className="about-info-row">
+                <span className="about-info-key">Lokasi</span>
+                <span className="about-info-value">{profile.location}</span>
+              </div>
+              <div className="about-info-row">
+                <span className="about-info-key">Telepon</span>
+                <span className="about-info-value">{profile.phone}</span>
+              </div>
+              <div className="about-info-row">
+                <span className="about-info-key">Status</span>
+                <span className="about-info-value">Tersedia untuk Kerja</span>
+              </div>
             </div>
-          )}
+
+            {languages && (
+              <div className="about-info-card">
+                <div className="about-info-title">Bahasa</div>
+                {languages.map((lang, lIdx) => (
+                  <div className="about-info-row" key={lIdx}>
+                    <span className="about-info-key">{lang.name}</span>
+                    <span className="about-info-value">{lang.level}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+              <span className="tech-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                <GraduationCap size={13} /> IPK 3.58 / 4.00
+              </span>
+              <span className="tech-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                <Award size={13} /> 7 Sertifikasi
+              </span>
+              <span className="tech-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                <MapPin size={13} /> Jakarta Barat
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Stats Grid */}
         <div className="stats-grid" id="portfolio-stats-grid">
           {stats.map((stat, index) => (
-            <div key={index} className="stat-card card-hover">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                <span className="stat-number">{stat.number}</span>
-                <div style={{ color: 'var(--accent-primary)' }}>
-                  {statIcons[index % statIcons.length]}
-                </div>
-              </div>
+            <div key={index} className="stat-card">
+              <span className="stat-number">{stat.number}</span>
               <span className="stat-label">{stat.label}</span>
             </div>
           ))}

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import AboutStats from './components/AboutStats';
-import Skills from './components/Skills';
+import Services from './components/Services';
 import Projects from './components/Projects';
+import AboutStats from './components/AboutStats';
 import ExperienceTimeline from './components/ExperienceTimeline';
 import Certificates from './components/Certificates';
+import Faq from './components/Faq';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { portfolioData } from './data/portfolioData';
@@ -42,7 +43,7 @@ export default function App() {
   // Smooth Scroll Reveal Animation Observer
   useEffect(() => {
     const revealElements = document.querySelectorAll(
-      'main .section, .section-header, .stat-card, .skill-category-card, .project-card, .timeline-item, .cert-card, .contact-method-item, .contact-form-card'
+      'main .section:not(.hero-section), .service-item, .project-item, .stat-card, .cert-card, .timeline-item, .faq-item, .contact-method-item, .contact-form-card'
     );
 
     revealElements.forEach((el) => el.classList.add('reveal-ready'));
@@ -81,9 +82,6 @@ export default function App() {
         aria-hidden="true"
       />
 
-      {/* Ambient background glow effect */}
-      <div className="bg-ambient-layer"></div>
-
       {/* Header & Navbar */}
       <Navbar
         data={portfolioData}
@@ -94,11 +92,12 @@ export default function App() {
       {/* Main Content Area */}
       <main>
         <Hero data={portfolioData} />
-        <AboutStats data={portfolioData} />
-        <Skills data={portfolioData} />
+        <Services data={portfolioData} />
         <Projects data={portfolioData} />
+        <AboutStats data={portfolioData} />
         <ExperienceTimeline data={portfolioData} />
         <Certificates data={portfolioData} />
+        <Faq data={portfolioData} />
         <Contact data={portfolioData} />
       </main>
 

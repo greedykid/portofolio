@@ -5,44 +5,33 @@ export default function ExperienceTimeline({ data }) {
   const { experiences, education } = data;
 
   return (
-    <section className="section" id="experience" style={{ backgroundColor: 'var(--bg-surface-1)' }}>
+    <section className="section" id="experience">
       <div className="container">
-        <div className="section-header">
-          <div className="section-tag" id="experience-section-tag">
-            <span>// PENGALAMAN & EDUKASI</span>
-          </div>
-          <h2 className="section-title">Riwayat Karier & Rekam Jejak</h2>
-          <p className="section-description">
-            Perjalanan profesional dan kontribusi rekayasa perangkat lunak pada berbagai proyek dan organisasi.
-          </p>
-        </div>
+        <div className="section-label" id="experience-section-label">Pengalaman &amp; Pendidikan</div>
+        <h2 className="section-title" style={{ marginBottom: '2.5rem' }}>Riwayat Karier &amp; Rekam Jejak</h2>
 
         <div className="experience-grid">
           {/* Work Experience */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.75rem' }}>
-              <div className="icon-btn" style={{ color: 'var(--accent-primary)' }}>
-                <Briefcase size={20} />
-              </div>
-              <h3 style={{ fontSize: '1.35rem', fontWeight: 700 }}>Pengalaman Kerja</h3>
+            <div className="exp-column-title">
+              <Briefcase size={19} />
+              <span>Pengalaman Kerja</span>
             </div>
 
             <div className="timeline-container" id="work-experience-timeline">
               {experiences.map((exp, index) => (
                 <div key={index} className="timeline-item">
                   <span className="timeline-dot"></span>
-                  <div className="timeline-card card-hover">
-                    <div className="timeline-header">
-                      <h4 className="timeline-role">{exp.role}</h4>
-                      <span className="timeline-period">{exp.period}</span>
-                    </div>
-                    <div className="timeline-company">{exp.company}</div>
-                    <ul className="timeline-bullets">
-                      {exp.bullets.map((bullet, bIdx) => (
-                        <li key={bIdx}>{bullet}</li>
-                      ))}
-                    </ul>
+                  <div className="timeline-header">
+                    <h3 className="timeline-role">{exp.role}</h3>
+                    <span className="timeline-period">{exp.period}</span>
                   </div>
+                  <div className="timeline-company">{exp.company}</div>
+                  <ul className="timeline-bullets">
+                    {exp.bullets.map((bullet, bIdx) => (
+                      <li key={bIdx}>{bullet}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
@@ -50,31 +39,25 @@ export default function ExperienceTimeline({ data }) {
 
           {/* Education */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.75rem' }}>
-              <div className="icon-btn" style={{ color: 'var(--accent-cyan)' }}>
-                <GraduationCap size={20} />
-              </div>
-              <h3 style={{ fontSize: '1.35rem', fontWeight: 700 }}>Latar Belakang Pendidikan</h3>
+            <div className="exp-column-title">
+              <GraduationCap size={19} />
+              <span>Pendidikan</span>
             </div>
 
             <div className="timeline-container" id="education-timeline">
               {education.map((edu, index) => (
                 <div key={index} className="timeline-item">
-                  <span className="timeline-dot" style={{ borderColor: 'var(--accent-cyan)' }}></span>
-                  <div className="timeline-card card-hover">
-                    <div className="timeline-header">
-                      <h4 className="timeline-role">{edu.degree}</h4>
-                      <span className="timeline-period">{edu.period}</span>
-                    </div>
-                    <div className="timeline-company" style={{ color: 'var(--accent-cyan)' }}>
-                      {edu.institution}
-                    </div>
-                    <ul className="timeline-bullets">
-                      {edu.bullets.map((bullet, bIdx) => (
-                        <li key={bIdx}>{bullet}</li>
-                      ))}
-                    </ul>
+                  <span className="timeline-dot"></span>
+                  <div className="timeline-header">
+                    <h3 className="timeline-role">{edu.degree}</h3>
+                    <span className="timeline-period">{edu.period}</span>
                   </div>
+                  <div className="timeline-company">{edu.institution}</div>
+                  <ul className="timeline-bullets">
+                    {edu.bullets.map((bullet, bIdx) => (
+                      <li key={bIdx}>{bullet}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>

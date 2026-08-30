@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X, FileText, ArrowRight } from 'lucide-react';
+import { Sun, Moon, Menu, X, ArrowRight } from 'lucide-react';
 
 export default function Navbar({ data, theme, toggleTheme }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,7 +11,7 @@ export default function Navbar({ data, theme, toggleTheme }) {
     };
 
     const handleResize = () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > 900) {
         setMobileMenuOpen(false);
       }
     };
@@ -38,11 +38,11 @@ export default function Navbar({ data, theme, toggleTheme }) {
   }, [mobileMenuOpen]);
 
   const navItems = [
-    { label: 'About', href: '#about' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Beranda', href: '#home' },
+    { label: 'Layanan', href: '#services' },
+    { label: 'Proyek', href: '#projects' },
+    { label: 'Tentang', href: '#about' },
+    { label: 'FAQ', href: '#faq' },
   ];
 
   const handleNavClick = (e, href) => {
@@ -66,10 +66,7 @@ export default function Navbar({ data, theme, toggleTheme }) {
         <div className="container navbar-inner">
           {/* Brand Logo */}
           <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="brand-logo" id="nav-brand-logo">
-            <div className="brand-symbol">
-              {data.profile.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
-            </div>
-            <span className="brand-name-text">{data.profile.name}</span>
+            {data.profile.name}
           </a>
 
           {/* Desktop Navigation Links */}
@@ -90,7 +87,7 @@ export default function Navbar({ data, theme, toggleTheme }) {
             </ul>
           </nav>
 
-          {/* Actions (Theme toggle & Resume CTA) */}
+          {/* Actions (Theme toggle & Contact CTA) */}
           <div className="nav-actions">
             <button
               onClick={toggleTheme}
@@ -99,23 +96,16 @@ export default function Navbar({ data, theme, toggleTheme }) {
               aria-label="Toggle color theme"
               id="theme-toggle-btn"
             >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+              {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
             </button>
 
             <a
-              href={data.profile.resumeUrl}
-              target={data.profile.resumeUrl.endsWith('.pdf') ? '_blank' : undefined}
-              rel="noopener noreferrer"
-              onClick={(e) => {
-                if (data.profile.resumeUrl.startsWith('#')) {
-                  handleNavClick(e, data.profile.resumeUrl);
-                }
-              }}
-              className="btn btn-primary btn-sm resume-btn-desktop"
-              id="nav-resume-btn"
+              href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
+              className="btn btn-outline btn-sm resume-btn-desktop"
+              id="nav-contact-btn"
             >
-              <FileText size={15} />
-              <span>Resume / CV</span>
+              <span>Kontak</span>
             </a>
 
             {/* Mobile Hamburger Toggle */}
@@ -144,9 +134,6 @@ export default function Navbar({ data, theme, toggleTheme }) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mobile-drawer-header">
-              <div className="brand-symbol">
-                {data.profile.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
-              </div>
               <span style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)' }}>
                 {data.profile.name}
               </span>
@@ -168,20 +155,12 @@ export default function Navbar({ data, theme, toggleTheme }) {
 
             <div className="mobile-drawer-footer">
               <a
-                href={data.profile.resumeUrl}
-                target={data.profile.resumeUrl.endsWith('.pdf') ? '_blank' : undefined}
-                rel="noopener noreferrer"
-                onClick={(e) => {
-                  setMobileMenuOpen(false);
-                  if (data.profile.resumeUrl.startsWith('#')) {
-                    handleNavClick(e, data.profile.resumeUrl);
-                  }
-                }}
+                href="#contact"
+                onClick={(e) => handleNavClick(e, '#contact')}
                 className="btn btn-primary"
                 style={{ width: '100%', paddingBlock: '0.85rem' }}
               >
-                <FileText size={16} />
-                <span>Lihat / Unduh CV (PDF)</span>
+                <span>Hubungi Saya</span>
               </a>
             </div>
           </div>

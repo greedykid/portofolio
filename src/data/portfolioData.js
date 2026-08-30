@@ -38,6 +38,77 @@ export const portfolioData = {
     { number: "2026", label: "Tahun Kelulusan Sarjana Universitas Gunadarma" }
   ],
 
+  // Layanan Utama (Section "My Services")
+  services: [
+    {
+      title: "Pengembangan Web (Front-End)",
+      description: "Membangun antarmuka modern, responsif, dan cepat dengan Tailwind CSS, Bootstrap, dan JavaScript ES6+ — fokus pada pengalaman pengguna yang mulus.",
+      icon: "layout"
+    },
+    {
+      title: "Pengembangan Back-End",
+      description: "Arsitektur backend MVC dengan Laravel, RESTful API, dan pengelolaan database relasional MySQL yang terstruktur dan aman.",
+      icon: "code"
+    },
+    {
+      title: "Analisis & Perancangan Sistem",
+      description: "Pemodelan UML, ERD, Use Case, Activity, hingga Sequence Diagram untuk memastikan sistem dirancang dengan benar sejak awal.",
+      icon: "cpu"
+    },
+    {
+      title: "IT Support & Troubleshooting",
+      description: "Perawatan hardware/software, instalasi OS (Windows/Linux), konfigurasi jaringan LAN/Wi-Fi, dan dukungan helpdesk yang responsif.",
+      icon: "server"
+    }
+  ],
+
+  // Pertanyaan yang Sering Diajukan (FAQ)
+  faqs: [
+    {
+      question: "Siapa Anda, dan apa yang Anda lakukan?",
+      answer: "Saya Rizki Arbiansyah, lulusan S1 Sistem Informasi Universitas Gunadarma (IPK 3.58) yang berfokus pada pengembangan web full stack dengan Laravel, MySQL, dan Tailwind CSS, serta memiliki keahlian di bidang IT Support dan jaringan komputer."
+    },
+    {
+      question: "Layanan apa saja yang Anda sediakan?",
+      answer: "Saya menyediakan layanan pengembangan web front-end dan back-end, analisis & perancangan sistem (UML/ERD), serta IT Support — mulai dari troubleshooting perangkat, instalasi OS, hingga konfigurasi jaringan."
+    },
+    {
+      question: "Teknologi apa yang Anda kuasai?",
+      answer: "PHP, Laravel, MySQL, Tailwind CSS, Bootstrap, JavaScript (ES6+), RESTful API, Git & GitHub, Docker dasar, Cisco LAN/WAN, serta berbagai tools seperti Postman, Figma, dan VS Code."
+    },
+    {
+      question: "Bagaimana pendekatan Anda terhadap proyek baru?",
+      answer: "Saya memulai dari analisis kebutuhan, menyusun perancangan sistem (UML/ERD), lalu membangun dan menguji secara bertahap sebelum deploy. Dokumentasi dan kualitas kode selalu menjadi prioritas."
+    },
+    {
+      question: "Apakah Anda bersedia direkrut full-time, remote, atau on-site?",
+      answer: "Ya. Saat ini saya tersedia untuk peluang kerja full-time, remote, hybrid, maupun on-site di area Jakarta Barat dan sekitarnya."
+    },
+    {
+      question: "Bagaimana cara berkolaborasi dengan Anda?",
+      answer: "Silakan hubungi saya melalui form kontak, email, WhatsApp, atau LinkedIn. Saya akan merespons dengan cepat untuk mendiskusikan kebutuhan Anda."
+    }
+  ],
+
+  // Tech Stack / Kemampuan Teknologi (Hero bawah)
+  techStack: [
+    "PHP",
+    "Laravel",
+    "MySQL",
+    "Tailwind CSS",
+    "Bootstrap",
+    "JavaScript (ES6+)",
+    "RESTful API",
+    "Git",
+    "GitHub",
+    "Docker",
+    "Figma",
+    "Postman",
+    "Cisco",
+    "Linux",
+    "Go-Lang"
+  ],
+
   // Matriks Keahlian (Skills Matrix dari CV)
   skillCategories: [
     {
