@@ -557,9 +557,15 @@ img {
   background-color: var(--bg-surface-1);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg), 0 0 0 1px oklch(0.75 0.16 200 / 0.04);
   overflow: hidden;
   width: 100%;
+  transition: transform var(--duration-slow) var(--ease-expo), box-shadow var(--duration-slow) var(--ease-expo);
+}
+
+.hero-code-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), var(--shadow-glow-cyan);
 }
 
 .terminal-header {
@@ -569,6 +575,7 @@ img {
   padding: 0.65rem 0.875rem;
   background-color: var(--bg-surface-2);
   border-bottom: 1px solid var(--border-subtle);
+  min-width: 0;
 }
 
 .terminal-dots {
@@ -589,6 +596,9 @@ img {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .terminal-body {
@@ -598,6 +608,7 @@ img {
   line-height: 1.65;
   color: var(--text-secondary);
   overflow-x: auto;
+  max-width: 100%;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -984,11 +995,14 @@ img {
 }
 
 .timeline-bullets li::before {
-  content: '▹';
+  content: '';
   position: absolute;
   left: 0;
-  color: var(--accent-primary);
-  font-size: 0.8125rem;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--accent-primary);
 }
 
 @media (max-width: 600px) {
