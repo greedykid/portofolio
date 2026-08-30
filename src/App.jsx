@@ -18,31 +18,53 @@ export default function App() {
     return 'dark'; // Dark theme default adhering to modern dev engineering style
   });
 
+  const [scrollProgress, setScrollProgress] = useState(0);
+
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('portfolio-theme', theme);
   }, [theme]);
 
+  // Scroll Progress indicator
   useEffect(() => {
-    const sections = document.querySelectorAll('main .section:not(.hero-section)');
+    const handleScrollProgress = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        const currentProgress = (window.scrollY / totalHeight) * 100;
+        setScrollProgress(Math.min(100, Math.max(0, currentProgress)));
+      }
+    };
 
-    sections.forEach((section) => section.classList.add('reveal-ready'));
+    window.addEventListener('scroll', handleScrollProgress, { passive: true });
+    return () => window.removeEventListener('scroll', handleScrollProgress);
+  }, []);
+
+  // Smooth Scroll Reveal Animation Observer
+  useEffect(() => {
+    const revealElements = document.querySelectorAll(
+      'main .section, .section-header, .stat-card, .skill-category-card, .project-card, .timeline-item, .cert-card, .contact-method-item, .contact-form-card'
+    );
+
+    revealElements.forEach((el) => el.classList.add('reveal-ready'));
 
     if (!('IntersectionObserver' in window)) {
-      sections.forEach((section) => section.classList.add('is-visible'));
+      revealElements.forEach((el) => el.classList.add('is-visible'));
       return undefined;
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
 
-    sections.forEach((section) => observer.observe(section));
+    revealElements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
@@ -52,6 +74,13 @@ export default function App() {
 
   return (
     <div className="portfolio-app-root">
+      {/* Dynamic Scroll Progress Bar */}
+      <div
+        className="scroll-progress-bar"
+        style={{ width: `${scrollProgress}%` }}
+        aria-hidden="true"
+      />
+
       {/* Ambient background glow effect */}
       <div className="bg-ambient-layer"></div>
 

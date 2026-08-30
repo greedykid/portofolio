@@ -38,6 +38,18 @@ body {
   position: relative;
 }
 
+/* Dynamic Scroll Progress Bar */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-cyan));
+  z-index: 10001;
+  transition: width 120ms ease-out;
+  box-shadow: 0 0 10px var(--accent-cyan);
+}
+
 /* Background Atmospheric Gradient Mesh */
 .bg-ambient-layer {
   position: fixed;
@@ -160,6 +172,107 @@ img {
   padding: 0.4rem 0.85rem;
   border-radius: var(--radius-sm);
 }
+
+/* ==========================================================================
+   PAGE ENTRY & SCROLL REVEAL ANIMATIONS
+   ========================================================================== */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(32px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Staggered entrance on initial page load */
+.site-header {
+  animation: fadeInDown 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+#hero-availability-badge {
+  animation: fadeInDown 600ms cubic-bezier(0.16, 1, 0.3, 1) 150ms both;
+}
+
+#hero-headline {
+  animation: fadeInUp 700ms cubic-bezier(0.16, 1, 0.3, 1) 250ms both;
+}
+
+#hero-value-prop {
+  animation: fadeInUp 700ms cubic-bezier(0.16, 1, 0.3, 1) 380ms both;
+}
+
+.hero-cta-group {
+  animation: fadeInUp 700ms cubic-bezier(0.16, 1, 0.3, 1) 500ms both;
+}
+
+.hero-socials {
+  animation: fadeInUp 700ms cubic-bezier(0.16, 1, 0.3, 1) 620ms both;
+}
+
+.hero-visual {
+  animation: fadeInRight 850ms cubic-bezier(0.16, 1, 0.3, 1) 350ms both;
+}
+
+/* Smooth Intersection Observer Scroll Reveal */
+.reveal-ready {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-ready.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cascading / Staggered transition delays for grid child cards */
+.stats-grid .stat-card:nth-child(1) { transition-delay: 60ms; }
+.stats-grid .stat-card:nth-child(2) { transition-delay: 130ms; }
+.stats-grid .stat-card:nth-child(3) { transition-delay: 200ms; }
+.stats-grid .stat-card:nth-child(4) { transition-delay: 270ms; }
+
+.skills-grid .skill-category-card:nth-child(1) { transition-delay: 60ms; }
+.skills-grid .skill-category-card:nth-child(2) { transition-delay: 150ms; }
+.skills-grid .skill-category-card:nth-child(3) { transition-delay: 240ms; }
+.skills-grid .skill-category-card:nth-child(4) { transition-delay: 330ms; }
+
+.projects-grid .project-card:nth-child(1) { transition-delay: 80ms; }
+.projects-grid .project-card:nth-child(2) { transition-delay: 180ms; }
+
+.certs-grid .cert-card:nth-child(1) { transition-delay: 40ms; }
+.certs-grid .cert-card:nth-child(2) { transition-delay: 90ms; }
+.certs-grid .cert-card:nth-child(3) { transition-delay: 140ms; }
+.certs-grid .cert-card:nth-child(4) { transition-delay: 190ms; }
+.certs-grid .cert-card:nth-child(5) { transition-delay: 240ms; }
+.certs-grid .cert-card:nth-child(6) { transition-delay: 290ms; }
+.certs-grid .cert-card:nth-child(7) { transition-delay: 340ms; }
 
 /* ==========================================================================
    SECTION COMMON STYLES
@@ -1214,5 +1327,21 @@ img {
     gap: 1.25rem;
     align-items: center;
     justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY: REDUCED MOTION SUPPORT
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-ready {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
