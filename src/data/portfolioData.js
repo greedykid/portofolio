@@ -9,7 +9,7 @@ export const portfolioData = {
   // Informasi Profil Utama
   profile: {
     name: "Rizki Arbiansyah",
-    title: "Web Developer & IT Support Specialist",
+    title: "Web Developer & IT Support",
     educationSubtitle: "S1 Sistem Informasi — Universitas Gunadarma (IPK: 3.58 / 4.00)",
     availability: "Tersedia untuk Peluang Kerja (Full-time / Remote / Hybrid / On-site)",
     location: "Jakarta Barat, DKI Jakarta, 11480",
