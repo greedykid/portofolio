@@ -293,6 +293,10 @@ button {
     grid-template-columns: 1fr auto;
   }
 
+  .navbar-inner > nav {
+    display: none;
+  }
+
   .nav-links {
     display: none;
   }
