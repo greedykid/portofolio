@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Sparkles, FolderGit2 } from 'lucide-react';
+import { ExternalLink, Github, Zap } from 'lucide-react';
 
 export default function Projects({ data }) {
   const { projects } = data;
@@ -74,10 +74,11 @@ export default function Projects({ data }) {
                     fontSize: '0.8125rem',
                     color: 'var(--text-secondary)'
                   }}>
-                    <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.2rem' }}>
-                      ⚡ Dampak & Hasil:
+                    <strong style={{ color: 'var(--text-primary)', display: 'inline-flex', alignItems: 'center', gap: '0.35rem', marginBottom: '0.25rem' }}>
+                      <Zap size={14} style={{ color: 'var(--accent-cyan)' }} />
+                      <span>Dampak & Hasil:</span>
                     </strong>
-                    {project.impact}
+                    <div style={{ marginTop: '0.15rem' }}>{project.impact}</div>
                   </div>
                 )}
 

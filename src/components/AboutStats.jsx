@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserCheck, Award, Code2, HeartHandshake } from 'lucide-react';
+import { UserCheck, Award, Code2, HeartHandshake, Languages } from 'lucide-react';
 
 export default function AboutStats({ data }) {
   const { profile, stats } = data;
@@ -37,8 +37,9 @@ export default function AboutStats({ data }) {
           {/* Languages Row */}
           {data.languages && (
             <div style={{ paddingTop: '1.25rem', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
-              <span style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>
-                🗣️ Kemampuan Bahasa:
+              <span style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--text-primary)', fontFamily: 'var(--font-mono)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                <Languages size={16} style={{ color: 'var(--accent-cyan)' }} />
+                <span>Kemampuan Bahasa:</span>
               </span>
               {data.languages.map((lang, lIdx) => (
                 <div key={lIdx} style={{ fontSize: '0.875rem', padding: '0.3rem 0.75rem', backgroundColor: 'var(--bg-surface-2)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
