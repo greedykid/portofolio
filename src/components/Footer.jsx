@@ -68,7 +68,7 @@ export default function Footer({ data }) {
 
         <div className="footer-bottom">
           <p className="footer-text">
-            © {new Date().getFullYear()} {profile.name}. Dibuat dengan standar performa &amp; craft tinggi.
+            © {new Date().getFullYear()} {profile.name}.
           </p>
 
           <div className="footer-socials">
