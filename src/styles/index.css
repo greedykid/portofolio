@@ -407,7 +407,7 @@ button {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
   gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
 }
@@ -419,7 +419,7 @@ button {
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  font-size: clamp(2.25rem, 5.5vw, 4.25rem);
   letter-spacing: -0.035em;
   margin-block: 1.25rem 1rem;
   line-height: 1.08;
@@ -481,6 +481,7 @@ button {
   padding: 0.75rem 1rem;
   background-color: var(--bg-surface-2);
   border-bottom: 1px solid var(--border-subtle);
+  min-width: 0;
 }
 
 .terminal-dots {
@@ -501,6 +502,9 @@ button {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .terminal-body {
@@ -510,6 +514,7 @@ button {
   line-height: 1.7;
   color: var(--text-secondary);
   overflow-x: auto;
+  max-width: 100%;
 }
 
 .code-keyword { color: #f472b6; }
@@ -523,7 +528,7 @@ button {
    ========================================================================== */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
   gap: 1.25rem;
   margin-top: 2rem;
 }
@@ -557,7 +562,7 @@ button {
    ========================================================================== */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 1.5rem;
 }
 
@@ -634,7 +639,7 @@ button {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
   gap: 1.75rem;
 }
 
@@ -735,6 +740,7 @@ button {
   gap: 0.75rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
 }
 
 /* ==========================================================================
@@ -781,6 +787,7 @@ button {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 1.5rem;
+  min-width: 0;
 }
 
 .timeline-header {
@@ -841,7 +848,7 @@ button {
    ========================================================================== */
 .certs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 1.25rem;
 }
 
@@ -875,7 +882,7 @@ button {
    ========================================================================== */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
   gap: clamp(2rem, 5vw, 3.5rem);
 }
 
@@ -900,6 +907,7 @@ button {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   transition: border-color var(--duration-fast) var(--ease-expo);
+  min-width: 0;
 }
 
 .contact-method-item:hover {
@@ -980,6 +988,94 @@ button {
   gap: 0.5rem;
   z-index: 1000;
   animation: slide-up 250ms var(--ease-expo);
+  max-width: calc(100vw - 2rem);
+}
+
+/* Experience columns share the same responsive behavior as the other grids. */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3rem;
+}
+
+@media (max-width: 760px) {
+  .experience-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-socials {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-inline: 1rem;
+  }
+
+  .site-header {
+    padding-block: 0.65rem;
+  }
+
+  .brand-logo {
+    min-width: 0;
+    gap: 0.45rem;
+    font-size: 1rem;
+  }
+
+  .brand-logo > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .hero-section {
+    padding-top: 6rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 11vw, 2.75rem);
+  }
+
+  .hero-cta-group,
+  .project-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero-cta-group .btn,
+  .project-actions .btn {
+    width: 100%;
+  }
+
+  .terminal-body {
+    padding: 1rem;
+    font-size: 0.72rem;
+  }
+
+  .card-base,
+  .skill-category-card,
+  .timeline-card,
+  .contact-form-card {
+    padding: 1.25rem;
+  }
+
+  .contact-method-item {
+    gap: 0.75rem;
+    padding: 0.85rem;
+  }
+
+  .toast-msg {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 
 @keyframes slide-up {
