@@ -412,6 +412,11 @@ button {
   align-items: center;
 }
 
+.hero-content,
+.hero-visual {
+  min-width: 0;
+}
+
 @media (max-width: 960px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -1038,6 +1043,11 @@ button {
     font-size: clamp(2rem, 11vw, 2.75rem);
   }
 
+  .status-pill {
+    max-width: 100%;
+    font-size: 0.75rem;
+  }
+
   .hero-cta-group,
   .project-actions {
     align-items: stretch;
@@ -1052,6 +1062,9 @@ button {
   .terminal-body {
     padding: 1rem;
     font-size: 0.72rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .card-base,
